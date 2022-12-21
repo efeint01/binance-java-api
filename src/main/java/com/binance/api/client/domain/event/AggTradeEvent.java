@@ -12,46 +12,93 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AggTradeEvent extends AggTrade {
 
-  @JsonProperty("e")
-  private String eventType;
+ @JsonProperty("a")
+  private long aggregatedTradeId;
 
-  @JsonProperty("E")
-  private long eventTime;
+  @JsonProperty("p")
+  private String price;
 
-  @JsonProperty("s")
-  private String symbol;
+  @JsonProperty("q")
+  private String quantity;
 
-  public String getEventType() {
-    return eventType;
+  @JsonProperty("f")
+  private long firstBreakdownTradeId;
+
+  @JsonProperty("l")
+  private long lastBreakdownTradeId;
+
+  @JsonProperty("T")
+  private long tradeTime;
+
+  @JsonProperty("m")
+  private boolean isBuyerMaker;
+
+  public long getAggregatedTradeId() {
+    return aggregatedTradeId;
   }
 
-  public void setEventType(String eventType) {
-    this.eventType = eventType;
+  public void setAggregatedTradeId(long aggregatedTradeId) {
+    this.aggregatedTradeId = aggregatedTradeId;
   }
 
-  public long getEventTime() {
-    return eventTime;
+  public String getPrice() {
+    return price;
   }
 
-  public void setEventTime(long eventTime) {
-    this.eventTime = eventTime;
+  public void setPrice(String price) {
+    this.price = price;
   }
 
-  public String getSymbol() {
-    return symbol;
+  public String getQuantity() {
+    return quantity;
   }
 
-  public void setSymbol(String symbol) {
-    this.symbol = symbol;
+  public void setQuantity(String quantity) {
+    this.quantity = quantity;
+  }
+
+  public long getFirstBreakdownTradeId() {
+    return firstBreakdownTradeId;
+  }
+
+  public void setFirstBreakdownTradeId(long firstBreakdownTradeId) {
+    this.firstBreakdownTradeId = firstBreakdownTradeId;
+  }
+
+  public long getLastBreakdownTradeId() {
+    return lastBreakdownTradeId;
+  }
+
+  public void setLastBreakdownTradeId(long lastBreakdownTradeId) {
+    this.lastBreakdownTradeId = lastBreakdownTradeId;
+  }
+
+  public long getTradeTime() {
+    return tradeTime;
+  }
+
+  public void setTradeTime(long tradeTime) {
+    this.tradeTime = tradeTime;
+  }
+
+  public boolean isBuyerMaker() {
+    return isBuyerMaker;
+  }
+
+  public void setBuyerMaker(boolean buyerMaker) {
+    isBuyerMaker = buyerMaker;
   }
 
   @Override
   public String toString() {
     return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-        .append("eventType", eventType)
-        .append("eventTime", eventTime)
-        .append("symbol", symbol)
-        .append("aggTrade", super.toString())
+        .append("aggregatedTradeId", aggregatedTradeId)
+        .append("price", price)
+        .append("quantity", quantity)
+        .append("firstBreakdownTradeId", firstBreakdownTradeId)
+        .append("lastBreakdownTradeId", lastBreakdownTradeId)
+        .append("tradeTime", tradeTime)
+        .append("isBuyerMaker", isBuyerMaker)
         .toString();
   }
 }
