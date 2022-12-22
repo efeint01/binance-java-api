@@ -16,7 +16,7 @@ public interface BinanceApiWebSocketClient {
 
   void onCandlestickEvent(String symbol, CandlestickInterval interval, BinanceApiCallback<CandlestickEvent> callback);
 
-  void onAggTradeEvent(String symbol, BinanceApiCallback<AggTradeEvent> callback, boolean isFutures);
+  void onAggTradeEvent(String symbol, BinanceApiCallback<AggTradeEvent> callback);
 
   void onUserDataUpdateEvent(String listenKey, BinanceApiCallback<UserDataUpdateEvent> callback);
 }
