@@ -23,6 +23,6 @@ public class MarketDataStreamExample {
     client.onDepthEvent("ethbtc", response -> System.out.println(response));
 
     // Obtain 1m candlesticks in real-time for ETH/BTC
-    client.onCandlestickEvent("ethbtc", CandlestickInterval.ONE_MINUTE, response -> System.out.println(response));
+    client.onCandlestickEvent("ethbtc", CandlestickInterval.ONE_MINUTE, false, response -> System.out.println(response));
   }
 }
