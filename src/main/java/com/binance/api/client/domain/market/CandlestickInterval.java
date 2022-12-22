@@ -5,7 +5,7 @@ package com.binance.api.client.domain.market;
  * m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
  */
 public enum CandlestickInterval {
-  ONE_SECOND("1s");
+  ONE_SECOND("1s"),
   ONE_MINUTE("1m"),
   THREE_MINUTES("3m"),
   FIVE_MINUTES("5m"),
