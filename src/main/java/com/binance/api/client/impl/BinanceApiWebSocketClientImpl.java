@@ -36,7 +36,7 @@ public class BinanceApiWebSocketClientImpl implements BinanceApiWebSocketClient,
     createNewWebSocket(channel, new BinanceApiWebSocketListener<>(callback, CandlestickEvent.class));
   }
 
-  public void onAggTradeEvent(String symbol, BinanceApiCallback<AggTradeEvent> callback, boolean isFutures) {
+  public void onAggTradeEvent(String symbol, boolean isFutures, BinanceApiCallback<AggTradeEvent> callback) {
     final String channel = String.format("%s@aggTrade", symbol);
     if(isFutures) {
         createNewFuturesWebSocket(channel, new BinanceApiWebSocketListener<>(callback, AggTradeEvent.class));
