@@ -36,9 +36,13 @@ public class BinanceApiWebSocketClientImpl implements BinanceApiWebSocketClient,
     createNewWebSocket(channel, new BinanceApiWebSocketListener<>(callback, CandlestickEvent.class));
   }
 
-  public void onAggTradeEvent(String symbol, BinanceApiCallback<AggTradeEvent> callback) {
+  public void onAggTradeEvent(String symbol, BinanceApiCallback<AggTradeEvent> callback, boolean isFutures) {
     final String channel = String.format("%s@aggTrade", symbol);
-    createNewWebSocket(channel, new BinanceApiWebSocketListener<>(callback, AggTradeEvent.class));
+    if(isFutures) {
+        createNewFuturesWebSocket(channel, new BinanceApiWebSocketListener<>(callback, AggTradeEvent.class));
+    } else {
+        createNewWebSocket(channel, new BinanceApiWebSocketListener<>(callback, AggTradeEvent.class));
+    }
   }
 
   public void onUserDataUpdateEvent(String listenKey, BinanceApiCallback<UserDataUpdateEvent> callback) {
@@ -47,6 +51,12 @@ public class BinanceApiWebSocketClientImpl implements BinanceApiWebSocketClient,
 
   private void createNewWebSocket(String channel, BinanceApiWebSocketListener<?> listener) {
     String streamingUrl = String.format("%s/%s", BinanceApiConstants.WS_API_BASE_URL, channel);
+    Request request = new Request.Builder().url(streamingUrl).build();
+    client.newWebSocket(request, listener);
+  }
+  
+   private void createNewFuturesWebSocket(String channel, BinanceApiWebSocketListener<?> listener) {
+    String streamingUrl = String.format("%s/%s", BinanceApiConstants.WS_FUTURES_API_BASE_URL, channel);
     Request request = new Request.Builder().url(streamingUrl).build();
     client.newWebSocket(request, listener);
   }
