@@ -30,7 +30,6 @@ public class BinanceApiWebSocketClientImpl implements BinanceApiWebSocketClient,
     createNewWebSocket(channel, new BinanceApiWebSocketListener<>(callback, DepthEvent.class));
   }
 
-  @Override
   public void onCandlestickEvent(String symbol, boolean isFutures, CandlestickInterval interval, BinanceApiCallback<CandlestickEvent> callback) {
     final String channel = String.format("%s@kline_%s", symbol, interval.getIntervalId());
     if(isFutures) {
