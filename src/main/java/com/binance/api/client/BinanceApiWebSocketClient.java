@@ -14,7 +14,7 @@ public interface BinanceApiWebSocketClient {
 
   void onDepthEvent(String symbol, BinanceApiCallback<DepthEvent> callback);
 
-  void onCandlestickEvent(String symbol, boolean isFutures, CandlestickInterval interval, BinanceApiCallback<CandlestickEvent> callback);
+  void onCandlestickEvent(String symbol, CandlestickInterval interval, BinanceApiCallback<CandlestickEvent> callback);
 
   void onAggTradeEvent(String symbol, boolean isFutures, BinanceApiCallback<AggTradeEvent> callback);
 
